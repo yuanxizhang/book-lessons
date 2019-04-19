@@ -23,8 +23,8 @@
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <% if !current_user %>
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
-          <%= link_to "Log in", signin_path, class:"navbar-brand" %>
-          <%= link_to 'Log in with Twitter', '/auth/twitter' class:"navbar-brand" %>
+          <%= link_to "Log in", login_path, class:"navbar-brand" %>
+          
         <% end %>
 
         <% if current_user %>
@@ -33,9 +33,9 @@
         <% end %>
       </div>
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="/lessons">Lessons</a></li>
-        </ul>
+        <div class="navbar-brand">
+          <a href="/lessons">Lessons</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -48,10 +48,8 @@
       <%= yield %>
     </div>
 
-    <footer>
-    <div class="container">
-      Book-lessons <%= Time.now.year %>
-    </div>
+  <footer>
+    
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>

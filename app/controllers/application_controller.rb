@@ -2,11 +2,6 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
   helper_method :current_user, :require_login, :admin_only, :user_signed_in?
-	before_filter :authenticate
-
-	def authenticate
-	  redirect_to :login unless user_signed_in?
-	end
 
 	def user_signed_in?
 	  !!current_user
@@ -14,14 +9,8 @@ class ApplicationController < ActionController::Base
 
 	def current_user
 	  @current_user ||= begin
-	    User.find_by(:id => session[:user_id]) if session[:user_id].present? || fetch_user_from_omniauth
+	    User.find_by(:id => session[:user_id]) if session[:user_id].present?
 	  end
-	end
-
-	def fetch_user_from_omniauth
-	  user = User.from_omniauth(env['omniauth.auth'])
-	  session[:current_user_id] = user.id
-	  user
 	end
 
 	def require_login

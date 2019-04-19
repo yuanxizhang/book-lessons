@@ -1,18 +1,20 @@
 class User < ApplicationRecord
-	has_many :authorizations
 	
 	has_secure_password
 
 	validates_presence_of :name, :on => :create
 	validates_presence_of :password, :on => :create
 
-	def self.from_omniauth(auth_hash)
-    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-    user.name = auth_hash['info']['name']
-    user.location = auth_hash['info']['location']
-    user.image_url = auth_hash['info']['image']
-    user.url = auth_hash['info']['urls']['Twitter']
-    user.save!
-    user
-  end
+	def self.find_or_create_from_auth_hash(auth)
+        where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+            user.provider = auth.provider
+            user.uid = auth.uid
+            user.first_name = auth.info.first_name
+            user.last_name = auth.info.last_name
+            user.email = auth.info.email
+            user.picture = auth.info.image
+            user.save!
+        end
+    end
+
 end
