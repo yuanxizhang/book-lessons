@@ -6,8 +6,25 @@ ruby '2.4.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for development and test
-gem 'sqlite3', '~> 1.3', '< 1.4'
+# gem 'sqlite3', '~> 1.3', '< 1.4'
+# Use PostgreSQL as database
 gem 'pg'
+# Use the devise gem for authentication
+gem 'devise', '~> 4.3.0'
+# Use Omniauth Google plugin
+gem "omniauth-google-oauth2", '~> 0.4.1'
+gem 'google-api-client', :require => 'google/api_client'
+gem 'omniauth'
+# Use Omniauth Twitter plugin
+gem 'omniauth-twitter'
+# Use ActiveRecord Sessions
+gem 'activerecord-session_store', '~> 1.0'
+gem 'railties', '~> 5.2.3'
+gem "font-awesome-rails"
+gem "jquery-rails"
+gem "jquery-ui-rails"
+# Implement the admin panel
+gem 'rails_admin'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use Puma as the app server
@@ -29,11 +46,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem 'bundler', '~> 2.0.1'
-gem 'dotenv'
-gem "omniauth"
-gem "omniauth-google-oauth2"
-gem 'omniauth-twitter'
-
+gem 'certified'
+# Use stripe for payment ptocessing
+gem 'stripe'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -52,6 +67,7 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem "database_cleaner"
   gem "rspec-rails"
+  gem 'dotenv', '~> 2.2.1'
   gem "rack_session_access"
   gem 'pry'
 end

@@ -1,4 +1,4 @@
-#Ignore .env file
+# Ignore environment configuration
 /.env
 
 # Ignore bundler config.
@@ -26,3 +26,5 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/config/secrets.yml

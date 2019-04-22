@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-	root 'welcome#home'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  root 'welcome#home'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  get "/login_with_google", to: redirect("/auth/google_oauth2")
+  resources :sessions, only: [:create, :destroy]
 
-  
-  get "/auth/:provider/callback", to: "sessions#create"
-  get 'auth/failure', to: redirect('welcome#home')
-
-  resources :users
-	resource :session, only: [:create, :destroy]
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
+  resources :lessons
+  resources :instructors
+  resources :bookings
+  resources :subjects
 end

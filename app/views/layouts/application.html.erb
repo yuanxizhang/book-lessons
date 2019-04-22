@@ -20,29 +20,32 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <% if !current_user %>
-          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
-          <%= link_to "Log in", login_path, class:"navbar-brand" %>
-          
-        <% end %>
-
-        <% if current_user %>
-          <%= link_to "#{current_user.name}'s profile", user_path(current_user), class:"navbar-brand"%>
-          <%= link_to "Log Out", logout_path, class:"navbar-brand", method:'delete' %>
-        <% end %>
-      </div>
-      <div class="collapse navbar-collapse">
-        <div class="navbar-brand">
-          <a href="/lessons">Lessons</a>
-        </div>
-      </div>
+      <a class="navbar-brand" href="<%= root_url %>"/> Home</a>
     </div>
-  </nav>
-
+    <div class="collapse navbar-collapse">
+      
+      <a class="navbar-brand" href="/lessons">Lessons</a>
+    
+      <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> |    
+        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>       
+      <% end %>
+      </p>
+    </div>
+  </div>
+</nav>
     <div class="container">
-      <% if flash[:notice] %>
-        <p class="flash-notice"><%= flash[:notice] %></p>
+      <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
       <%= yield %>
