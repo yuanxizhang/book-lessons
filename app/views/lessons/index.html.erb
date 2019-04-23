@@ -1,0 +1,34 @@
+<h2>All Lessons</h2>
+
+Search for a lesson:
+<%= form_tag lessons_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<div>
+  Filter lessons by instructor:
+  <%= form_tag("/lessons", method: "get") do %>
+    <%= select_tag "instructor", options_from_collection_for_select(@instructors, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+<div>
+  Filter lessons by date:
+  <%= form_tag("/lessons", method: "get") do %>
+  <%= select_tag "date", options_for_select(["Today", "Past lessons"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+<% @lesson.each do |lesson| %>
+  <div>
+    <h3><%= lesson.title %></h3> - <%= last_updated lesson %><br>
+    <h3>by: <%= link_to lesson.instructor.name, instructor_lessons_path(lesson.instructor) %></h3>
+    <p><%= display_instructor(lesson) %></p>
+    <p><%= lesson.description %></p>
+  </div>
+<% end %>

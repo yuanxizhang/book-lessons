@@ -14,15 +14,9 @@ class ApplicationController < ActionController::Base
 
 	def current_user
 	  @current_user ||= begin
-	    User.find_by(:id => session[:user_id]) if session[:user_id].present? || fetch_user_from_omniauth
+	    User.find_by(:id => session[:user_id]) if session[:user_id].present?
 	  end
 	end
-
-  def fetch_user_from_omniauth
-    user = User.from_omniauth(env['omniauth.auth'])
-    session[:user_id] = user.id
-    user
-  end
 
 	def require_login
     unless current_user

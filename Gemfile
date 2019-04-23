@@ -10,16 +10,16 @@ gem 'rails', '~> 5.2.3'
 # Use PostgreSQL as database
 gem 'pg'
 # Use the devise gem for authentication
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4'
 # Use Omniauth Google plugin
 gem "omniauth-google-oauth2", '~> 0.4.1'
-gem 'google-api-client', :require => 'google/api_client'
+
 gem 'omniauth'
 # Use Omniauth Twitter plugin
 gem 'omniauth-twitter'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store', '~> 1.0'
-gem 'railties', '~> 5.2.3'
+gem 'railties', '~> 5.0', '>= 5.0.0.1'
 gem "font-awesome-rails"
 gem "jquery-rails"
 gem "jquery-ui-rails"

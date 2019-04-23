@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :bookings
+  has_many :lessons, through: :bookings
 
   devise :database_authenticatable, :registerable,
        :recoverable, :rememberable, :trackable, :validatable,

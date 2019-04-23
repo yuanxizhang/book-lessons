@@ -4,12 +4,8 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],  { access_type: "offline", approval_prompt: "",
-  scope: 'userinfo.email,calendar' }
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` as its `secret_key`
-  # by default. You can change it below and use your own secret key.
+  scope: 'userinfo.email' }
+
   # config.secret_key = '21a6545ed75ccfa93116192f2ac78a072359e1f08947e6b0915f7751b2b0b09785c0920b9eb68e48816c4e743d4673c9340eac7dc6c4f904333da3d794e8e2bc'
 
   # ==> Controller configuration
@@ -20,8 +16,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-
+  config.mailer_sender = 'feedback@book-lessons.com'
+  config.scoped_views = true
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
