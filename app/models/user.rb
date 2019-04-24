@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :bookings
   has_many :lessons, through: :bookings
+  accepts_nested_attributes_for :booking
 
   devise :database_authenticatable, :registerable,
        :recoverable, :rememberable, :trackable, :validatable,

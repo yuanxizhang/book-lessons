@@ -22,8 +22,6 @@
         </button>
       <a class="navbar-brand" href="<%= root_url %>"/> Home</a>
       <a class="navbar-brand" href="/lessons">Lessons</a>
-    </div>
-    <div class="collapse navbar-collapse">
       <div class="navbar-text pull-right">
         <% if user_signed_in? %>
             <%= link_to "Edit Profile", edit_user_registration_path, class:"navbar-brand"%>
@@ -34,14 +32,16 @@
         <% end %>
       </div>
     </div>
+    <div class="collapse navbar-collapse">
+
+    </div>
   </div>
 </nav>
     <div class="container">
-      <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
       <% end %>
 
       <%= yield %>

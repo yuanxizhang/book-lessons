@@ -11,7 +11,7 @@ Search for a lesson:
 <div>
   Filter lessons by instructor:
   <%= form_tag("/lessons", method: "get") do %>
-    <%= select_tag "instructor", options_from_collection_for_select(@instructors, "id", "name"), include_blank: true %>
+    <%= select_tag "instructor", collection_select(:lesson, :Instructor_id, Instructor.all, :id, :name, prompt: true), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>

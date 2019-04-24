@@ -21,7 +21,26 @@ class LessonsController < ApplicationController
   end
 
   def index
-    @lessons = Lesson.all
+    @instructors = Instructor.all
+
+		if params[:instructor_id]
+      @lessons = Instructor.find(params[:instructor_id]).Lessons
+    else
+      if params[:search]
+        @lessons = Lesson.search(params[:search])
+      elsif !params[:instructor].blank?
+        @lessons = Lesson.where(instructor: params[:author])
+      elsif !params[:date].blank?
+        if params[:date] == "Today"
+          @lessons = Lesson.where("created_at >=?", Time.zone.today.beginning_of_day)
+        else
+          @lessons = Lesson.where("created_at <?", Time.zone.today.beginning_of_day)
+        end
+      else
+        # if no filters are applied, show all Lessons
+        @lessons = Lesson.all
+      end
+    end
   end
 
   def show
