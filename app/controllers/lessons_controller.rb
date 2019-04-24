@@ -32,7 +32,7 @@ class LessonsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @lesson.update(book_params)
+      if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
@@ -43,7 +43,7 @@ class LessonsController < ApplicationController
   end
 
   def destroy
-     @book.destroy
+     @lesson.destroy
      respond_to do |format|
        format.html { redirect_to lessons_url, notice: 'Lesson was successfully deleted.' }
        format.json { head :no_content }
