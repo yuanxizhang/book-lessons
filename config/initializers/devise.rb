@@ -3,8 +3,13 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],  { access_type: "offline", approval_prompt: "",
-  scope: 'userinfo.email' }
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+  {
+      scope: 'userinfo.email',
+      prompt: 'select_account',
+      image_aspect_ratio: 'square',
+      image_size: 50
+    }
 
   # config.secret_key = '21a6545ed75ccfa93116192f2ac78a072359e1f08947e6b0915f7751b2b0b09785c0920b9eb68e48816c4e743d4673c9340eac7dc6c4f904333da3d794e8e2bc'
 

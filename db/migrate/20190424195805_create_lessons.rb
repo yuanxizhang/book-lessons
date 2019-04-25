@@ -4,8 +4,8 @@ class CreateLessons < ActiveRecord::Migration[5.2]
       t.string :title
     	t.string :about
       t.decimal :price
-      t.interger :points
-      t.interger :seats
+      t.integer :points
+      t.integer :seats
       t.datetime :start_time
       t.datetime :end_time
       t.string :address

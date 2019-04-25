@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
       if params[:search]
         @lessons = Lesson.search(params[:search])
       elsif !params[:instructor].blank?
-        @lessons = Lesson.where(instructor: params[:author])
+        @lessons = Lesson.where(instructor: params[:instructor])
       elsif !params[:date].blank?
         if params[:date] == "Today"
           @lessons = Lesson.where("created_at >=?", Time.zone.today.beginning_of_day)

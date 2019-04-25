@@ -24,11 +24,11 @@ Search for a lesson:
   <% end %>
 </div>
 
-<% @lesson.each do |lesson| %>
+<% @lessons.each do |lesson| %>
   <div>
     <h3><%= lesson.title %></h3> - <%= last_updated lesson %><br>
     <h3>by: <%= link_to lesson.instructor.name, instructor_lessons_path(lesson.instructor) %></h3>
     <p><%= display_instructor(lesson) %></p>
-    <p><%= lesson.description %></p>
+    <p><%= lesson.about %></p>
   </div>
 <% end %>
