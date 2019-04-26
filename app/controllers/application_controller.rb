@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
   before_action :authenticate_user!
 
-  helper_method :admin_only
+  helper_method :admin_only, :require_login
 
   def admin_only
     unless current_user.admin
@@ -11,14 +11,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+	def require_login
+    unless current_user
+      redirect_to root_url
+    end
+  end
+
 	private
 
   def after_sign_in_path_for(resource)
-     # After you enter login info and click submit, I want you to be sent to the registrations#show page
-     profile_path
+     # After you enter login info and click submit, go to lessons#index page
+     skills_path
   end
 
   def after_sign_out_path_for(resource_or_scope)
-     new_user_session_path
+     lessons_path
   end
 end

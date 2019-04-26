@@ -7,7 +7,7 @@ ruby '2.4.2'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for development and test
 # gem 'sqlite3', '~> 1.3', '< 1.4'
-# Use PostgreSQL as database
+# Use PostgreSQL as the database
 gem 'pg'
 # Use the devise gem for authentication
 gem 'devise', '~> 4.4'
@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

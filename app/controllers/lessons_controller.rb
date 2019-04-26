@@ -70,13 +70,13 @@ class LessonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup between actions.
-    def set_lesson
+  # Use callbacks to share common setup between actions.
+  def set_lesson
       @lesson = Lesson.find(params[:id])
-    end
+  end
 
-    # Never trust parameters from the internet, only allow the whitelist through.
-    def lesson_params
+  # Never trust parameters from the internet, only allow the whitelist through.
+  def lesson_params
       params.require(:lesson).permit(:title, :description, :instructor_id, :instructor_id)
-    end
+  end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     devise_scope :user do
-      root to: "users/show", :as => "profile"
+      root to: "registrations#profile", :as => "Profile"
     end
   end
 
@@ -19,13 +19,13 @@ Rails.application.routes.draw do
       root to: "registrations#new", :as => "unauthenticated"
     end
   end
+  #
   # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :users, only: [:new, :create, :show, :update]
   resources :lessons
   resources :instructors do
     resources :lessons
   end
   resources :bookings
-  resources :subjects
+  resources :skills
 end

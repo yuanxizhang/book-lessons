@@ -21,7 +21,11 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = booking.all
+     if current_user
+       @sheets = current_user.bookings
+     else
+       redirect_to new_user_session_path, notice: 'You are not logged in.'
+     end
   end
 
   def show
