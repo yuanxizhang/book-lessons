@@ -9,8 +9,6 @@ gem 'rails', '~> 5.2.3'
 # gem 'sqlite3', '~> 1.3', '< 1.4'
 # Use PostgreSQL as the database
 gem 'pg'
-# Use the devise gem for authentication
-gem 'devise', '~> 4.4'
 # Use Omniauth Google plugin
 gem "omniauth-google-oauth2", '~> 0.4.1'
 

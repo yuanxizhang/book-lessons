@@ -1,0 +1,21 @@
+<% if @user.admin %>
+	<h5>ADMIN DASHBOARD</h5>
+<% end %>
+
+<h1>Signed in as  <%= @user.email %></h1>
+
+<p>points: <%= @user.points %></p>
+
+
+<p><%= link_to "Dicover lessons",lessons_path %></p>
+
+<%= link_to "Find instructors",instructors_path %>
+
+
+<br>
+Visited Rides:
+<ul>
+<% @user.bookings.each do |booking| %>
+	<li><%= booking.lesson.title %> - <%= booking.lesson.points %> points</li>
+<% end %>
+</ul>

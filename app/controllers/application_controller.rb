@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  helper_method :admin_only, :require_login, :user_signed_in?, :current_user
 
-  helper_method :admin_only, :require_login
+	def current_user
+    # The session[:user_id] has been set
+    if session[:user_id].present?
+      @current_user ||= User.find_by(:id => session[:user_id])
+    end
+  end
 
-  def admin_only
+	def admin_only
     unless current_user.admin
       flash[:notice] = "You must be an admin to perform that function!"
       redirect_to user_path(current_user)
@@ -13,18 +18,14 @@ class ApplicationController < ActionController::Base
 
 	def require_login
     unless current_user
-      redirect_to root_url
+      redirect_to root_url, notice: 'Please log in.'
     end
   end
 
 	private
 
-  def after_sign_in_path_for(resource)
-     # After you enter login info and click submit, go to lessons#index page
-     skills_path
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-     lessons_path
+	def user_signed_in?
+  	# converts current_user to a boolean by negating the negation
+  	!!current_user
   end
 end
