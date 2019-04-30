@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user), notice: 'Logged in!'
     else
-      flash.now.alert = 'Email or password is invalid'
+      flash.now.alert = 'The username and password you entered did not match our records. Please double-check and try again.'
       render :new
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_27_054147) do
+ActiveRecord::Schema.define(version: 2019_04_30_002140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,14 +39,34 @@ ActiveRecord::Schema.define(version: 2019_04_27_054147) do
     t.decimal "price"
     t.integer "points"
     t.integer "seats"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.string "address"
     t.string "city"
     t.string "state"
     t.string "zipcode"
     t.integer "instructor_id"
     t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "available", default: true
+    t.boolean "online", default: false
+    t.string "length"
+    t.string "requirement"
+    t.string "dates"
+    t.string "time"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "instructor_id"
+    t.integer "rating"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
