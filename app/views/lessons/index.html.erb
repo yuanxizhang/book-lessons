@@ -1,34 +1,42 @@
-<h2>All Lessons</h2>
+<h2>Lessons</h2>
 
 Search for a lesson:
-<%= form_tag lessons_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
+<%= form_tag(lessons_path, method: :get) do %>
+  <%= text_field_tag :title %>
+  <%= submit_tag 'Search' %>
 <% end %>
 
 <div>
-  Filter lessons by instructor:
+  Filter lessons by skills:
   <%= form_tag("/lessons", method: "get") do %>
-    <%= select_tag "instructor", collection_select(:lesson, :Instructor_id, Instructor.all, :id, :name, prompt: true), include_blank: true %>
+    <%= select_tag "skill", options_from_collection_for_select(@skills, "id", "name"), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
 
-<div>
-  Filter lessons by date:
-  <%= form_tag("/lessons", method: "get") do %>
-  <%= select_tag "date", options_for_select(["Today", "Past lessons"]), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
-</div>
 
-<% @lessons.each do |lesson| %>
-  <div>
-    <h3><%= lesson.title %></h3> - <%= last_updated lesson %><br>
-    <h3>by: <%= link_to lesson.instructor.name, instructor_lessons_path(lesson.instructor) %></h3>
-    <p><%= display_instructor(lesson) %></p>
-    <p><%= lesson.about %></p>
-  </div>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Lesson</th>
+      <th>Instructor</th>
+      <th>city</th>
+      <th>Price</th>
+      <th>Available</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lessons.each do |lesson| %>
+    <tr>
+      <td><%= link_to lesson.title, lesson_path(lesson) %></td>
+      <td><%= link_to lesson.instructor.name, instructor_path(lesson.instructor) %></td>
+      <td><%= link_to lesson.city %></td>
+      <td><%= link_to lesson.price %></td>
+      <td><%= link_to lesson.available %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Lesson', new_lesson_path, class: 'btn btn-primary btn-lg' %>

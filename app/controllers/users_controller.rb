@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash[:notice] = 'Sign up was not successful.'
+      flash[:alert] = 'Sign up was not successful.'
       render :new
     end
   end
@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :provider, :uid, :tickets, :admin)
+    params.require(:user).permit(:email, :password, :password_confirmation, :provider, :uid, :google_token, :google_refresh_token,:admin)
   end
 end

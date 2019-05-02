@@ -1,38 +1,39 @@
-<%= form_for lesson do |f| %>
-  <%= author_id_field(@lesson) %><br>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for lesson do |f| %>
 
+      <%= f.label "Title" %>
+      <%= f.text_field :title %><br>
+      <%= f.label "About" %>
+      <%= f.text_area :about, size: "60x12" %><br>
+      <%= f.label "Price" %> dollars
+      <%= f.text_field :price %><br>
+      <%= f.label "Seats" %>
+      <%= f.text_field :seats %><br>
+      <%= f.label "Dates" %>
+      <%= f.text_field :dates %><br>
+      <%= f.label "Time" %>
+      <%= f.text_field :time %><br>
+      <%= f.label "Length" %> hour
+      <%= f.text_field :length %><br>
+      <%= f.label "Requirement" %>
+      <%= f.text_field :requirement %><br>    
+      <p>Avaible? <%= f.check_box :available, options = {:class => "lesson_available"} %></p>
+      <p>Online? <%= f.check_box :online, options = {:class => "lesson_online"} %></p>
+      <%= f.label "Address" %>
+      <%= f.text_field :address %><br>
+      <%= f.label "City" %>
+      <%= f.text_field :city %><br>
+      <%= f.label "State" %>
+      <%= f.text_field :state %><br>
+      <%= f.label "Zipcode" %>
+      <%= f.text_field :zipcode %><br>
+      <%= f.label "instructor" %>
+      <%= f.collection_select(:instructor_id, Instructor.all, :id, :name, prompt: true) %><br>
+      <%= f.label "skill" %>
+      <%= f.collection_select(:skill_id, Skill.all, :id, :name, prompt: true) %><br>
 
-  <%= f.label "Title" %>
-  <%= f.text_field :title %><br>
-  <%= f.label "About" %>
-  <%= f.text_area :about, size: "60x12" %><br>
-  <%= f.label : "Price" %>
-  <%= f.text_field :price %><br>
-  <%= f.label : "Seats" %>
-  <%= f.text_field :seats %><br>
-  <%= f.label : "Length" %>
-  <%= f.text_field :length %><br>
-  <%= f.label : "Requirements" %>
-  <%= f.text_field :requirments %><br>
-  <%= f.label : "Dates" %>
-  <%= f.text_field :dates %><br>
-  <%= f.label : "Time" %>
-  <%= f.text_field :time %><br>
-  <p>Avaible? <%= f.check_box :available, options = {:class => "lesson_available"} %></p>
-  <br />
-  <p>Online? <%= f.check_box :online, options = {:class => "lesson_online"} %></p>
-  <br />
-  <%= f.label : "Address" %>
-  <%= f.text_field :address %><br>
-  <%= f.label : "City" %>
-  <%= f.text_field :city %><br>
-  %= f.label : "State" %>
-  <%= f.text_field :state %><br>
-  <%= f.label : "Zipcode" %>
-  <%= f.text_field :zipcode %><br>
-  <%= f.label "instructor" %>
-  <%= f.collection_select(:lesson, :instructor_id, Instructor.all, :id, :name, prompt: true) %><br>
-  <%= f.collection_select(:lesson, :skill_id, Skill.all, :id, :name, prompt: true) %><br>
-
-  <%= f.submit "Submit" %>
-<% end %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>
+</div>

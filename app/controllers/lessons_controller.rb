@@ -1,13 +1,13 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-  before_action :admin_only, except: [:index, :show]
-  
+  # before_action :admin_only, except: [:index, :show]
+
   def new
     @lesson = Lesson.new
   end
 
   def create
-    @lesson = @instructor.lessons.build(lesson_params)
+    @lesson = Lesson.new(lesson_params)
 
     respond_to do |format|
       if @lesson.save
@@ -21,25 +21,15 @@ class LessonsController < ApplicationController
   end
 
   def index
-    @instructors = Instructor.all
+    @skills = Skill.all
 
-		if params[:instructor_id]
-      @lessons = Instructor.find(params[:instructor_id]).Lessons
+    if params[:title]
+        @lessons = Lesson.where('title LIKE ?', "%#{params[:title]}%")
+    elsif params[:skill_id]
+        @lessons = Lesson.find_by(id: skill_id).lessons
     else
-      if params[:search]
-        @lessons = Lesson.search(params[:search])
-      elsif !params[:instructor].blank?
-        @lessons = Lesson.where(instructor: params[:instructor])
-      elsif !params[:date].blank?
-        if params[:date] == "Today"
-          @lessons = Lesson.where("created_at >=?", Time.zone.today.beginning_of_day)
-        else
-          @lessons = Lesson.where("created_at <?", Time.zone.today.beginning_of_day)
-        end
-      else
         # if no filters are applied, show all Lessons
         @lessons = Lesson.all
-      end
     end
   end
 
@@ -77,6 +67,6 @@ class LessonsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the whitelist through.
   def lesson_params
-      params.require(:lesson).permit(:title, :description, :instructor_id, :instructor_id)
+      params.require(:lesson).permit(:title, :about, :price, :seats, :length, :requirement, :dates, :time, :available, :online, :address, :city, :state, :zipcode,:skill_id, :instructor_id)
   end
 end

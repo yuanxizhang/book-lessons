@@ -2,20 +2,14 @@
 	<h5>ADMIN DASHBOARD</h5>
 <% end %>
 
-<h1>Signed in as  <%= @user.email %></h1>
+<p>Signed in as  <%= @user.email %></p>
 
-<p>points: <%= @user.points %></p>
-
-
-<p><%= link_to "Dicover lessons",lessons_path %></p>
-
-<%= link_to "Find instructors",instructors_path %>
-
+<p><%= link_to "Browse lessons", lessons_path %></p>
 
 <br>
-Visited Rides:
+Booked lessons:
 <ul>
 <% @user.bookings.each do |booking| %>
-	<li><%= booking.lesson.title %> - <%= booking.lesson.points %> points</li>
+	<li><%= booking.lesson.title %> with <%= booking.lesson.instructor %> </li>
 <% end %>
 </ul>
