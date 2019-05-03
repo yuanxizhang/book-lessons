@@ -1,13 +1,4 @@
-<% if @user.admin %>
-	<h5>ADMIN DASHBOARD</h5>
-<% end %>
-
-<p>Signed in as  <%= @user.email %></p>
-
-<p><%= link_to "Browse lessons", lessons_path %></p>
-
-<br>
-Booked lessons:
+<h2>booked Lessons</h2>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -20,13 +11,13 @@ Booked lessons:
   </thead>
 
   <tbody>
-    <% @user.bookings.each do |booking| %>
+    <% @bookings.each do |booking| %>
     <tr>
       <td><%= link_to booking.lesson.title, lesson_path(booking.lesson) %></td>
       <td><%= link_to booking.lesson.instructor.name, instructor_path(booking.lesson.instructor) %></td>
       <td><%= booking.lesson.dates %></td>
       <td><%= booking.lesson.time %></td>
-      <td><%= booking.lesson.address %>, <%= booking.lesson.city %> <%= booking.lesson.state %></td>
+      <td><%= booking.lesson.address %>, <%= link_to booking.lesson.city %> <%= link_to booking.lesson.state %></td>
     </tr>
     <% end %>
   </tbody>

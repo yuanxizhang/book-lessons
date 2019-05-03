@@ -5,28 +5,31 @@
 <% end %>
 
 <h3><%= @lesson.title %></h3>
-About: <%= @lesson.about %><br />
-Price: <%= @lesson.price %> dollars<br />
+<%= @lesson.about %><br><br>
+
+Price in dollars: <%= number_to_currency(@lesson.price) %><br />
 Seats: <%= @lesson.seats %><br />
 Dates: <%= @lesson.dates %><br />
 Time: <%= @lesson.time %><br />
-Length: <%= @lesson.length %> hour<br />
+Length in hours: <%= @lesson.length %> <br />
 Requirement: <%= @lesson.requirement %><br />
-Still Available? <%= @lesson.available %><br />
-Lesson is online? <%= @lesson.online %><br />
-Address: <%= @lesson.address %><br />
-City: <%= @lesson.city %>, <%= @lesson.state %> <%= @lesson.zipcode %><br />
+Available? <%= human_boolean(@lesson.available) %><br />
+Online Lesson? <%= human_boolean(@lesson.online) %><br />
+Address: <%= @lesson.address %>, <%= @lesson.city %>, <%= @lesson.state %> <%= @lesson.zipcode %><br />
+<br>
 <% if current_user && current_user.admin %>
-  <%= link_to "Edit lesson", edit_lesson_path(@lesson) %>
-<% else %>
+    <%= link_to "Edit lesson", edit_lesson_path(@lesson), class: 'btn btn-info' %>
 
+<% elsif current_user %>
     <%= form_tag("/bookings", method: "post") do %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= hidden_field_tag :user_id, current_user.id %>
         <%= hidden_field_tag :lesson_id, @lesson.id %>
-        <%= button_tag "Book this Lesson" %>
+        <%= button_tag "Book this lesson", class: 'btn btn-info' %>
     <% end %>
-<% end %>
 
-<br>
-<p><%= link_to 'All lessons', lessons_path %></p>
+<% else %>
+    <br>
+    To book this lesson, please <%= link_to "Sign up", new_user_path %> or
+    <%= link_to "Log in", new_session_path %> .
+<% end %>

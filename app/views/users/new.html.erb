@@ -1,5 +1,6 @@
 <% provide(:title, 'Sign up') %>
-<h2 lass="col-md-6 col-md-offset-3">Sign Up</h2>
+<%= link_to image_tag("favicon.ico", size: "60x60", alt: "logo"), root_path, class: "col-md-6 col-md-offset-3" %>
+<h2 class="col-md-6 col-md-offset-3">Sign Up</h2>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>

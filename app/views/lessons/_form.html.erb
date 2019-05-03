@@ -17,7 +17,7 @@
       <%= f.label "Length" %> hour
       <%= f.text_field :length %><br>
       <%= f.label "Requirement" %>
-      <%= f.text_field :requirement %><br>    
+      <%= f.text_field :requirement %><br>
       <p>Avaible? <%= f.check_box :available, options = {:class => "lesson_available"} %></p>
       <p>Online? <%= f.check_box :online, options = {:class => "lesson_online"} %></p>
       <%= f.label "Address" %>
@@ -33,7 +33,7 @@
       <%= f.label "skill" %>
       <%= f.collection_select(:skill_id, Skill.all, :id, :name, prompt: true) %><br>
 
-      <%= f.submit "Submit" %>
+      <%= f.submit "Submit", class: 'btn btn-info' %>
     <% end %>
   </div>
 </div>

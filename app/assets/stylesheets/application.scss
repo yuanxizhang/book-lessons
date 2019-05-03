@@ -1,0 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap/theme';
+@import "font-awesome";
+
+body {
+  padding-top: 80px;
+  font-family: Arvo;
+}
+footer {
+  margin-top: 100px;
+}
+table, td, th {
+  vertical-align: middle; border: none;
+}
+th {
+  border-bottom: 1px solid #DDD;
+}
+td {
+  padding: 8px;
+}
+.container{
+  max-width: 1000px;
+}
+.navbar{
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+}
+.search-form{
+  input{
+    font-size: 13px;
+    text-align: center;
+  }
+}
+.footer{
+  font-size: 12px;
+  padding-top: 30px;
+  ul{
+    padding-left: 0;
+    > li{
+      display: inline;
+      padding-right: 15px;
+      color: #003569;
+    }
+  }
+  p{
+    color: #999;
+  }
+}

@@ -21,7 +21,7 @@ class InstructorsController < ApplicationController
   end
 
   def index
-    @instructors = instructor.all
+    @instructors = Instructor.all
   end
 
   def show
@@ -53,7 +53,7 @@ class InstructorsController < ApplicationController
   private
     # Use callbacks to share common setup between actions.
     def set_instructor
-      @instructor = instructor.find(params[:id])
+      @instructor = Instructor.find(params[:id])
     end
 
     # Never trust parameters from the internet, only allow the whitelist through.

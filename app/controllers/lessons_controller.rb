@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-  # before_action :admin_only, except: [:index, :show]
+  before_action :admin_only, except: [:index, :show]
 
   def new
     @lesson = Lesson.new
@@ -21,12 +21,8 @@ class LessonsController < ApplicationController
   end
 
   def index
-    @skills = Skill.all
-
     if params[:title]
-        @lessons = Lesson.where('title LIKE ?', "%#{params[:title]}%")
-    elsif params[:skill_id]
-        @lessons = Lesson.find_by(id: skill_id).lessons
+        @lessons = Lesson.where('lower(title) LIKE ?', "%#{params[:title].downcase}%")
     else
         # if no filters are applied, show all Lessons
         @lessons = Lesson.all

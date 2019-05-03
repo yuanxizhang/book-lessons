@@ -1,23 +1,14 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-
-  def new
-    @booking = Booking.new
-  end
+  before_action :require_login
 
   def create
-    @booking = @current_user.bookings.build(booking_params)
 
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to @booking, notice: 'The booking was successfully completed.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
+    @booking = Booking.create(booking_params)
+
+    flash[:notice] = @booking.take_lesson
+
+    redirect_to user_path(@booking.user)
   end
 
   def index
@@ -62,6 +53,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the internet, only allow the whitelist through.
     def booking_params
-      params.require(:booking).permit(:full_name, :phone, :card_token, :user_id, :lesson_id)
+          params.permit(:user_id, :lesson_id)
     end
 end
