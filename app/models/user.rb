@@ -11,4 +11,10 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20 }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
+
+  before_save :downcase_email
+
+  def downcase_email
+     email.downcase!
+   end
 end

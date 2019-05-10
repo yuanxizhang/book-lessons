@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :sections
   resources :skills
   resources :instructors do
-    resources :reviews
+    resources :reviews, only: [:index, :new, :create]
   end
 
 end

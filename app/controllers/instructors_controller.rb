@@ -21,7 +21,7 @@ class InstructorsController < ApplicationController
   end
 
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.all.order( 'name ASC' )
   end
 
   def show
@@ -58,6 +58,6 @@ class InstructorsController < ApplicationController
 
     # Never trust parameters from the internet, only allow the whitelist through.
     def instructor_params
-      params.require(:instructor).permit(:name, :email, :phone_number)
+      params.require(:instructor).permit(:name, :bio, :class_time)
     end
 end

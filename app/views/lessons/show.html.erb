@@ -18,7 +18,8 @@ Online Lesson? <%= human_boolean(@lesson.online) %><br />
 Address: <%= @lesson.address %>, <%= @lesson.city %>, <%= @lesson.state %> <%= @lesson.zipcode %><br />
 <br>
 <% if current_user && current_user.admin %>
-    <%= link_to "Edit lesson", edit_lesson_path(@lesson), class: 'btn btn-info' %>
+    <%= link_to "Edit lesson", edit_lesson_path(@lesson.id), class: 'btn btn-info' %>
+    <%= link_to "Delete lesson", lessons_path(@lesson.id), method: 'DELETE', class: 'btn btn-info' %>
 
 <% elsif current_user %>
     <%= form_tag("/bookings", method: "post") do %>

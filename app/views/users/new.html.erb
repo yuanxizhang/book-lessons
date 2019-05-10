@@ -4,15 +4,16 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
+      <%= render 'error_messages' %>
 
       <%= f.label :email %><br>
-      <%= f.email_field :email %><br>
+      <%= f.email_field :email, class: 'form-control' %><br>
 
       <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
+      <%= f.password_field :password, class: 'form-control' %><br>
 
       <%= f.label :password_confirmation, "Confirmation" %><br>
-      <%= f.password_field :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, class: 'form-control' %><br>
 
       <p>Admin? <%= f.check_box :admin, options = {:class => "user_admin"} %></p>
       <br>
