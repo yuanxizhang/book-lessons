@@ -5,4 +5,5 @@ class Lesson < ApplicationRecord
   has_many :users, through: :bookings
 
   validates :title, presence: true
+  scope :available, -> { where(available: true) }
 end

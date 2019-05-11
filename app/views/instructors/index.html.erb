@@ -5,6 +5,7 @@
       <th>Instructor</th>
       <th>Bio</th>
       <th>Class Schedule</th>
+      <th>Average Rating</th>
     </tr>
   </thead>
 
@@ -14,6 +15,7 @@
       <td><%= link_to instructor.name, instructor_path(instructor) %></td>
       <td><%= instructor.bio %></td>
       <td><%= instructor.class_time %></td>
+      <td><%= instructor.average_rating %></td>
     </tr>
     <% end %>
   </tbody>

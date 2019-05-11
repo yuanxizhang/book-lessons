@@ -1,4 +1,4 @@
-lass SectionsController < ApplicationController
+class SectionsController < ApplicationController
 	before_action :find_section, only: [:show, :edit, :update]
   before_action :admin_only, except: [:index, :show]
 

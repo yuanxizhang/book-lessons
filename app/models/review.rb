@@ -8,14 +8,4 @@ class Review < ApplicationRecord
   validates :user_id, presence: true
 
   scope :most_recent, -> { order("created_at desc") }
-
-  def self.review_count
-    if self.count == 0
-      "No reviews."
-    elsif self.count == 1
-      "1 review"
-    else
-      "#{self.count} reviews"
-    end
-  end
 end

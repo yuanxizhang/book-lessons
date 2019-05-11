@@ -25,6 +25,7 @@ class InstructorsController < ApplicationController
   end
 
   def show
+    @reviews = @instructor.reviews.all.order( 'created_at DESC')
   end
 
   def edit
