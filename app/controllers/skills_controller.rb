@@ -3,7 +3,7 @@ class SkillsController < ApplicationController
   before_action :admin_only, except: [:index, :show]
 
 	def index
-		@skills = Skill.all
+		@skills = Skill.all.order('name ASC')
 	end
 
 	def new
@@ -42,7 +42,7 @@ class SkillsController < ApplicationController
 	private
 
 	def find_skill
-    @skill = skill.find_by(id: params[:id])
+    @skill = Skill.find_by(id: params[:id])
   end
 
 	def skill_params

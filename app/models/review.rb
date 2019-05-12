@@ -7,5 +7,5 @@ class Review < ApplicationRecord
   validates :instructor_id, presence: true
   validates :user_id, presence: true
 
-  scope :most_recent, -> { order("created_at desc") }
+  scope :latest_first, -> { order("created_at desc") }
 end

@@ -79,7 +79,7 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <%= image_tag("kaylee-garrett-yoga-lesson", size: "300x200", alt: "logo") %>
+        <%= image_tag(@instructor.picture_url, size: "300x200", alt: "picture") if @instructor.picture.present? %>
       </div>
     </div>
 

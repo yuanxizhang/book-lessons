@@ -42,7 +42,7 @@ class SectionsController < ApplicationController
 	private
 
 	def find_section
-    @section = section.find_by(id: params[:id])
+    @section = Section.find_by(id: params[:id])
   end
 
 	def section_params

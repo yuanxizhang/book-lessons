@@ -1,0 +1,38 @@
+<h2>Explore Skills</h2>
+
+<% @skills.each do |skill| %>
+  <h4><%= link_to skill.name, skill_path(skill.id) %> </h4>
+  <div class="lessons">
+    <table class="table table-striped" style="width: 100%">
+      <colgroup>
+       <col span="1" style="width: 50%;">
+       <col span="1" style="width: 20%;">
+       <col span="1" style="width: 20%;">
+       <col span="1" style="width: 10%;">
+     </colgroup>
+      <thead>
+        <tr>
+          <th>Lesson</th>
+          <th>Instructor</th>
+          <th>city</th>
+          <th>Seats left</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% skill.lessons.each do |lesson| %>
+        <tr>
+          <td><%= link_to lesson.title, lesson_path(lesson) %></td>
+          <td><%= link_to lesson.instructor.name, instructor_path(lesson.instructor) %></td>
+          <td><%= lesson.city %></td>
+          <td><%= lesson.seats %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+<% end %>
+<% if current_user && current_user.admin %>
+    <%= link_to 'New skill', new_skill_path, class: 'btn btn-info' %>
+<% end %>

@@ -1,0 +1,31 @@
+<h4><%= link_to "All Sections", sections_path %> > <%= link_to @skill.section.name, section_path(@skill.section.id) %> > <%= @skill.name %></h4>
+<h2><%= @skill.name %></h2>
+<br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th>Instructor</th>
+        <th>city</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Seats left</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @skill.lessons.each do |lesson| %>
+      <tr>
+        <td><%= link_to lesson.title, lesson_path(lesson.id) %></td>
+        <td><%= link_to lesson.instructor.name, instructor_path(lesson.instructor.id) %></td>
+        <td><%= lesson.city %></td>
+        <td><%= number_to_currency(lesson.price) %></td>
+        <td><%= human_boolean(lesson.available) %></td>
+        <td><%= lesson.seats %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+<% if current_user && current_user.admin %>
+    <%= link_to "Edit skill", edit_skill_path(@skill.id), class: 'btn btn-info' %>
+<% end %>

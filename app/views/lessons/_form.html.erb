@@ -28,10 +28,10 @@
       <%= f.text_field :state %><br>
       <%= f.label "Zipcode" %>
       <%= f.text_field :zipcode %><br>
-      <%= f.label "instructor" %>
-      <%= f.collection_select(:instructor_id, Instructor.all, :id, :name, prompt: true) %><br>
-      <%= f.label "skill" %>
-      <%= f.collection_select(:skill_id, Skill.all, :id, :name, prompt: true) %><br>
+      <%= f.label "Instructor" %>
+      <%= f.collection_select(:instructor_id, Instructor.all.order('name ASC'), :id, :name, prompt: true) %><br>
+      <%= f.label "Skill" %>
+      <%= f.collection_select(:skill_id, Skill.all.order('name ASC'), :id, :name, prompt: true) %><br>
 
       <%= f.submit "Submit", class: 'btn btn-info' %>
     <% end %>

@@ -1,4 +1,4 @@
-<h2>Lessons with Available Seats</h2>
+<h2>Lessons</h2>
 
 Search for a lesson:
 <%= form_tag(lessons_path, method: :get) do %>
@@ -6,7 +6,7 @@ Search for a lesson:
   <%= submit_tag 'Search', :class => 'btn btn-info' %>
 <% end %>
 
-<table class="table table-hover">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Lesson</th>

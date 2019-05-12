@@ -8,6 +8,8 @@
       <%= f.text_area :bio, size: "60x12" %><br>
       <%= f.label "Class Time: " %>
       <%= f.text_field :class_time %><br>
+      <%= f.label "Add a picture: " %>
+      <%= f.file_field :picture, id: :instructor_picture %><br>
 
       <%= f.submit "Submit", class: 'btn btn-info' %>
     <% end %>

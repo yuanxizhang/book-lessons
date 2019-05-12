@@ -5,9 +5,9 @@ class ReviewsController < ApplicationController
 	def index
 		if params[:instructor_id]
         @instructor = Instructor.find(params[:instructor_id])
-        @reviews = @instructor.reviews.order('created_at DESC')
+        @reviews = @instructor.reviews.latest_first
     else
-		    @reviews = Review.all.order('created_at DESC')
+		    @reviews = Review.all.latest_first
     end
 	end
 

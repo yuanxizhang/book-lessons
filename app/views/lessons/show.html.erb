@@ -7,6 +7,8 @@
 <h3><%= @lesson.title %></h3>
 <%= @lesson.about %><br><br>
 
+Instructor: <%= link_to @lesson.instructor.name, instructor_path(@lesson.instructor.id) %><br><br>
+
 Price in dollars: <%= number_to_currency(@lesson.price) %><br />
 Seats: <%= @lesson.seats %><br />
 Dates: <%= @lesson.dates %><br />

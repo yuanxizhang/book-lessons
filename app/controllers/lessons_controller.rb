@@ -25,7 +25,7 @@ class LessonsController < ApplicationController
         @lessons = Lesson.where('lower(title) LIKE ?', "%#{params[:title].downcase}%")
     else
         # if no filters are applied, show all available Lessons, sorted by created_at DESC
-        @lessons = Lesson.available.order('created_at DESC')
+        @lessons = Lesson.order('created_at DESC')
     end
   end
 

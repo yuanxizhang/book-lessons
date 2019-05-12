@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for skill do |f| %>
+      <%= f.label "Name: " %>
+      <%= f.text_field :name %><br>
+      <%= f.label "Section" %>
+      <%= f.collection_select(:section_id, Section.all.order('name ASC'), :id, :name, prompt: true) %><br>
+      <%= f.submit "Submit", class: 'btn btn-info' %>
+    <% end %>
+  </div>
+</div>
