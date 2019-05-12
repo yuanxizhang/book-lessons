@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app was built with Ruby 2.6 and Rails 5.2. Here are steps that are necessary to get the application up and running.
 
-Things you may want to cover:
+Things you might need to do:
 
-* Ruby version
+* Check Ruby version, make sure it is updated to the latest version.
+:> ruby -v
 
-* System dependencies
+* Check Rails version, make sure it is updated to the latest version.
+:> rails -v
 
-* Configuration
+* System dependencies: Add gems needed to Gemfile
+:> bundle install
+
+* Configuration:
+set up postgresql as the default database used for development and production in config/database.yml
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+:> rake db:migrate
 
 * Deployment instructions
-
-* ...

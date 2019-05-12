@@ -28,14 +28,14 @@ DATA = {
     "john.smith@gmail.com"
   ],
   :booking_keys =>
-    ["user_id", "lesson_id", "full_name", "phone"],
+    ["user_id", "lesson_id"],
   :bookings => [
-    [1, 1, "Max Charles", "415-123-4567"],
-    [2, 2, "Skai Jackson", "415-123-4567"],
-    [3, 3, "Kaleo Elam", "415-123-4567"],
-    [7, 4, "Davis Cleveland", "415-123-4567"],
-    [8, 5, "Cole Sand", "415-123-4567"],
-    [9, 6, "Kyle Wallis", "415-123-4567"]
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [7, 4],
+    [8, 5],
+    [9, 6]
   ],
   :instructor_keys =>
     ["name"],
@@ -70,12 +70,12 @@ DATA = {
 
 def main
   # make_users
-  make_admin
+  # make_admin
   # make_lessons
   # make_bookings
   # make_instructors
-  # make_skills
-  # make_sections
+  make_skills
+  make_sections
 end
 
 def make_users

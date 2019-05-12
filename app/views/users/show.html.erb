@@ -1,5 +1,5 @@
 <% if @user.admin %>
-	<h5>ADMIN DASHBOARD</h5>
+	<h4><%= link_to "Admin Dashboard", rails_admin_path %></h4>
 <% end %>
 
 <p>Signed in as  <%= @user.email %></p>

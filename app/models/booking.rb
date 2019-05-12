@@ -7,8 +7,6 @@ class Booking < ApplicationRecord
   def take_lesson
     if self.lesson.seats < 1
         "Sorry. This lesson is sold out!"
-    elsif self.user.lessons.include? self.lesson
-        "Sorry. You already booked this lesson!"
     else
         update_lesson
         "Thanks for booking the #{self.lesson.title} lesson!"
