@@ -15,7 +15,8 @@ class SkillsController < ApplicationController
 	end
 
 	def create
-	  @skill = Skill.new(skill_params)
+
+  	@skill = Skill.new(skill_params)
 
 	  if @skill.valid?
 	  	@skill.save
@@ -46,7 +47,7 @@ class SkillsController < ApplicationController
   end
 
 	def skill_params
-    params.require(:skill).permit(:name)
+    params.require(:skill).permit(:name, :section_id)
   end
 
 end

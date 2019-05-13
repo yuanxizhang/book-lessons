@@ -10,6 +10,7 @@ gem 'rails', '~> 5.2.3'
 # Use PostgreSQL as the database
 gem 'pg'
 gem 'carrierwave'
+gem 'file_validators'
 # Use Omniauth Google plugin
 gem "omniauth-google-oauth2", '~> 0.4.1'
 

@@ -5,10 +5,22 @@
 <% end %>
 
 <h3><%= @lesson.title %></h3>
-<%= @lesson.about %><br><br>
+<div class="row">
+  <div class="col-md-4">
+    <div class="wrapper">
+      <%= image_tag(@lesson.instructor.picture_url, size: "300x200", alt: "picture") if @lesson.instructor.picture.present? %>
+    </div>
+  </div>
 
-Instructor: <%= link_to @lesson.instructor.name, instructor_path(@lesson.instructor.id) %><br><br>
+  <div class="col-md-8 basic-info">
+    <div class="instructor-wrapper">
+      <%= @lesson.about %><br><br>
+      Instructor: <%= link_to @lesson.instructor.name, instructor_path(@lesson.instructor.id) %><br><br>
+    </div>
+  </div>
+</div>
 
+<br>
 Price in dollars: <%= number_to_currency(@lesson.price) %><br />
 Seats: <%= @lesson.seats %><br />
 Dates: <%= @lesson.dates %><br />
@@ -21,13 +33,16 @@ Address: <%= @lesson.address %>, <%= @lesson.city %>, <%= @lesson.state %> <%= @
 <br>
 <% if current_user && current_user.admin %>
     <%= link_to "Edit lesson", edit_lesson_path(@lesson.id), class: 'btn btn-info' %>
-    <%= link_to "Delete lesson", lessons_path(@lesson.id), method: 'DELETE', class: 'btn btn-info' %>
+    <%= link_to "Delete lesson", lesson_path(@lesson.id), data: {:confirm => 'Are you sure?'}, method: 'DELETE', class: 'btn btn-info' %>
 
 <% elsif current_user %>
+    Enter student name to book the lesson:
     <%= form_tag("/bookings", method: "post") do %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= hidden_field_tag :user_id, current_user.id %>
         <%= hidden_field_tag :lesson_id, @lesson.id %>
+        Student Name: <input name="full_name"><br>
+        Student Phone: <input name="phone"><br>
         <%= button_tag "Book this lesson", class: 'btn btn-info' %>
     <% end %>
 

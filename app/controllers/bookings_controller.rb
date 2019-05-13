@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
   def index
      if current_user
-       @sheets = current_user.bookings
+       @bookings = current_user.bookings
      else
        redirect_to new_user_session_path, notice: 'You are not logged in.'
      end
@@ -48,11 +48,11 @@ class BookingsController < ApplicationController
   private
     # Use callbacks to share common setup between actions.
     def set_booking
-      @booking = booking.find(params[:id])
+      @booking = Booking.find(params[:id])
     end
 
     # Never trust parameters from the internet, only allow the whitelist through.
     def booking_params
-          params.permit(:user_id, :lesson_id)
+          params.permit(:user_id, :lesson_id, :full_name, :phone)
     end
 end

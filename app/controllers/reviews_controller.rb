@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def find_review
-    @review = review.find_by(id: params[:id])
+    @review = Review.find_by(id: params[:id])
   end
 
 	def review_params

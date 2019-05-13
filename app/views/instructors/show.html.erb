@@ -89,10 +89,10 @@
         <p class="name"> <%= @instructor.bio %></p>
         Teaching Schedule: <span class="name"> <%= @instructor.class_time %></span><br>
         Average Rating: <%= @instructor.average_rating %><br>
-        <%= link_to "Reviews", instructor_reviews_path(@instructor, @instructor.reviews) %>
+        <%= link_to "REVIEWS", instructor_reviews_path(@instructor, @instructor.reviews) %>
       </div>
-
     </div>
+  </div>
 </div>
 
 <table class="table table-hover">
@@ -121,7 +121,7 @@
 
 <% if current_user && current_user.admin %>
     <%= link_to "Edit Instructor", edit_instructor_path(@instructor.id), class: 'btn btn-info' %>
-    <%= link_to "Delete Instructor", instructors_path(@instructor.id), method: 'DELETE', class: 'btn btn-info' %>
+    <%= link_to "Delete Instructor", instructor_path(@instructor.id), data: {:confirm => 'Are you sure?'}, method: 'DELETE', class: 'btn btn-info' %>
 <% elsif current_user %>
     <%= form_tag("/instructors/#{@instructor.id}/reviews", method: "post") do %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>

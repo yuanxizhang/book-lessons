@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for section do |f| %>
+      <%= render 'shared/errors', object: section %>
+
       <%= f.label "Name: " %>
       <%= f.text_field :name %><br>
       <%= f.submit "Submit", class: 'btn btn-info' %>

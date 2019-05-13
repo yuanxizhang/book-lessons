@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :new]
   resources :lessons
   resources :bookings
-  resources :sections
   resources :skills
+  resources :sections do
+    resources :skills, only: [:new, :create]
+  end
+
   resources :instructors do
     resources :reviews, only: [:index, :new, :create]
   end

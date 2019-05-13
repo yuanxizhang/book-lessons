@@ -100,6 +100,9 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
+    file_validators (2.3.0)
+      activemodel (>= 3.2)
+      mime-types (>= 1.0)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
@@ -330,6 +333,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   dotenv (~> 2.2.1)
+  file_validators
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
