@@ -27,7 +27,7 @@ class SectionsController < ApplicationController
 	end
 
 	def edit
-		
+
 	end
 
 	def update
@@ -47,7 +47,7 @@ class SectionsController < ApplicationController
   end
 
 	def section_params
-    params.require(:section).permit(:name, :skills)
+    params.require(:section).permit(:name, skills_attributes: [:id, :name, :section_id])
   end
 
 end
