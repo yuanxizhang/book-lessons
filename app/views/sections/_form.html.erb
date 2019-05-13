@@ -3,9 +3,17 @@
     <%= form_for section do |f| %>
       <%= render 'shared/errors', object: section %>
 
-      <%= f.label "Name: " %>
+      <%= f.label "Section Name: " %>
       <%= f.text_field :name %><br>
-      <%= f.submit "Submit", class: 'btn btn-info' %>
+      <br>
+      <%= f.fields_for :skills do |builder| %>
+          <%= builder.label "Skill Name: " %>
+          <%= builder.text_field :name %>
+          <%= builder.check_box :_destroy %>
+          <%= builder.label :_destroy, "Remove Skill" %>
+      <% end %>
+      <br>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

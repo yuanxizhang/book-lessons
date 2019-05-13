@@ -34,7 +34,7 @@
       <%= f.label "Skill" %>
       <%= f.collection_select(:skill_id, Skill.all.order('name ASC'), :id, :name, prompt: true) %><br>
 
-      <%= f.submit "Submit", class: 'btn btn-info' %>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

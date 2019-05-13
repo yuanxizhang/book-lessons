@@ -1,13 +1,13 @@
 class Instructor < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
-  has_many :lessons
+  has_many :lessons, :dependent => :destroy
   has_many :skills, through: :lessons
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
   has_many :users, through: :reviews
 
   validates :name, presence: true
-  
+
   accepts_nested_attributes_for :reviews
 
   def average_rating

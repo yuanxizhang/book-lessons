@@ -3,7 +3,7 @@
       <li><%= message %></li>
     <% end %>
 <% end %>
-
+<h4><%= link_to "All Sections", sections_path %> > <%= link_to @lesson.skill.section.name, section_path(@lesson.skill.section.id) %> > <%= link_to @lesson.skill.name, skill_path(@lesson.skill.id) %> > <%= @lesson.title %></h4>
 <h3><%= @lesson.title %></h3>
 <div class="row">
   <div class="col-md-4">
@@ -32,8 +32,8 @@ Online Lesson? <%= human_boolean(@lesson.online) %><br />
 Address: <%= @lesson.address %>, <%= @lesson.city %>, <%= @lesson.state %> <%= @lesson.zipcode %><br />
 <br>
 <% if current_user && current_user.admin %>
-    <%= link_to "Edit lesson", edit_lesson_path(@lesson.id), class: 'btn btn-info' %>
-    <%= link_to "Delete lesson", lesson_path(@lesson.id), data: {:confirm => 'Are you sure?'}, method: 'DELETE', class: 'btn btn-info' %>
+    <%= link_to "Edit lesson", edit_lesson_path(@lesson.id), class: 'btn btn-primary' %>
+    <%= link_to "Delete lesson", lesson_path(@lesson.id), data: {:confirm => 'Are you sure?'}, method: 'DELETE', class: 'btn btn-primary' %>
 
 <% elsif current_user %>
     Enter student name to book the lesson:
@@ -43,7 +43,7 @@ Address: <%= @lesson.address %>, <%= @lesson.city %>, <%= @lesson.state %> <%= @
         <%= hidden_field_tag :lesson_id, @lesson.id %>
         Student Name: <input name="full_name"><br>
         Student Phone: <input name="phone"><br>
-        <%= button_tag "Book this lesson", class: 'btn btn-info' %>
+        <%= button_tag "Book this lesson", class: 'btn btn-primary' %>
     <% end %>
 
 <% else %>

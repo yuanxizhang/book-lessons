@@ -3,15 +3,16 @@ class SectionsController < ApplicationController
   before_action :admin_only, except: [:index, :show]
 
 	def index
-		@sections = Section.all
+		@sections = Section.all.order('name ASC')
 	end
 
 	def new
 		@section = Section.new
+		3.times { @section.skills.build }
 	end
 
 	def show
-
+		@skills = @section.skills.order('name ASC')
 	end
 
 	def create
@@ -26,7 +27,7 @@ class SectionsController < ApplicationController
 	end
 
 	def edit
-
+		
 	end
 
 	def update
@@ -46,7 +47,7 @@ class SectionsController < ApplicationController
   end
 
 	def section_params
-    params.require(:section).permit(:name)
+    params.require(:section).permit(:name, :skills)
   end
 
 end

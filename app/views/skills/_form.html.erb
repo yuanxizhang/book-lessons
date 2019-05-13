@@ -7,7 +7,7 @@
       <%= f.text_field :name %><br>
       <%= f.label "Section" %>
       <%= f.collection_select(:section_id, Section.all.order('name ASC'), :id, :name, prompt: true) %><br>
-      <%= f.submit "Submit", class: 'btn btn-info' %>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

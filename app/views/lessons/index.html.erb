@@ -3,7 +3,7 @@
 Search for a lesson:
 <%= form_tag(lessons_path, method: :get) do %>
   <%= text_field_tag :title %>
-  <%= submit_tag 'Search', :class => 'btn btn-info' %>
+  <%= submit_tag 'Search', :class => 'btn btn-primary' %>
 <% end %>
 
 <table class="table table-striped">
@@ -33,5 +33,5 @@ Search for a lesson:
 </table>
 
 <% if current_user && current_user.admin %>
-    <%= link_to 'New Lesson', new_lesson_path, class: 'btn btn-info' %>
+    <%= link_to 'New Lesson', new_lesson_path, class: 'btn btn-primary' %>
 <% end %>

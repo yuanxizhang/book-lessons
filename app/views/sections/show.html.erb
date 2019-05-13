@@ -33,6 +33,6 @@
   </div>
 <% end %>
 <% if current_user && current_user.admin %>
-    <%= link_to "Add New Skill", new_section_skill_path(@section.id), class: 'btn btn-info' %>
-    <%= link_to "Edit Section", edit_section_path(@section.id), class: 'btn btn-info' %>
+    <%= link_to "Add New Skill", new_section_skill_path(@section.id), class: 'btn btn-primary' %>
+    <%= link_to "Edit Section", edit_section_path(@section.id), class: 'btn btn-primary' %>
 <% end %>

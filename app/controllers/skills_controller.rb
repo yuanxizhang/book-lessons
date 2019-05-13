@@ -3,10 +3,16 @@ class SkillsController < ApplicationController
   before_action :admin_only, except: [:index, :show]
 
 	def index
-		@skills = Skill.all.order('name ASC')
+		if params[:section_id]
+        @instructor = Section.find(params[:section_id])
+        @skills = @section.skills.order('name ASC')
+    else
+		    @skills = Skill.all.order('name ASC')
+    end
 	end
 
 	def new
+		@section = Section.find(params[:section_id])
 		@skill = Skill.new
 	end
 
@@ -15,7 +21,7 @@ class SkillsController < ApplicationController
 	end
 
 	def create
-
+		@section = Section.find(params[:section_id])
   	@skill = Skill.new(skill_params)
 
 	  if @skill.valid?

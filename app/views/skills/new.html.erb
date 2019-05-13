@@ -1,10 +1,12 @@
+<h3>Add a new skill in section: <%= @section.name %></h3>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_tag("/sections/#{@section.id}/skills", method: "post") do %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= hidden_field_tag :section_id, @section.id %>
-        Skill Name: <input name="[skill]name"><br>
-        <%= button_tag "New skill", class: 'btn btn-info' %>
+    <%= form_for [@section, @skill] do |f| %>
+      <%= render 'shared/errors', object: @skill %>
+      <%= f.hidden_field :section_id, :value => @section.id %>
+      <%= f.label "Name: " %>
+      <%= f.text_field :name %><br>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

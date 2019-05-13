@@ -1,11 +1,11 @@
 <h2>Explore Sections</h2>
 <% @sections.each do |section| %>
-  <h4><%= section.name %></h4>
+  <h4><%= link_to section.name, section_path(section) %></h4>
   <% section.skills.each do |skill| %>
     <%= link_to skill.name, skill_path(skill.id) %><br>
   <% end %>
   <br>
 <% end %>
 <% if current_user && current_user.admin %>
-    <%= link_to 'New Section', new_section_path, class: 'btn btn-info' %>
+    <%= link_to 'New Section', new_section_path, class: 'btn btn-primary' %>
 <% end %>
