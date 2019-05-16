@@ -88,7 +88,7 @@
         <h3 class="name"> <%= @instructor.name %></h3>
         <p class="name"> <%= @instructor.bio %></p>
         Teaching Schedule: <span class="name"> <%= @instructor.class_time %></span><br>
-        Average Rating: <%= @instructor.average_rating %><br>
+        Average Rating: <%= @instructor.average_rating %><br><br>
         <%= link_to "REVIEWS", instructor_reviews_path(@instructor, @instructor.reviews) %>
       </div>
     </div>

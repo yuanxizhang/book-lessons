@@ -1,7 +1,8 @@
-<h2>Instructor: <%= link_to @instructor.name, instructor_path(@instructor)%></h2>
+<h2>Reviews for instructor: <%= link_to @instructor.name, instructor_path(@instructor)%></h2>
 Average rating: <%= @instructor.average_rating %> <br>
-Review count: <%= @instructor.review_count %>  <br><br>
+Total reviews: <%= @instructor.review_count %>  <br><br>
 <% @reviews.each do |review| %>
-  <%= review.created_at.strftime("%b %d, %Y") %><br>
+  Reviewed on: <%= review.created_at.strftime("%b %d, %Y") %><br>
   <%= review.body %><br>
+  by <%= review.user.email.split(/[@]+/).first %><br><br>
 <% end %>

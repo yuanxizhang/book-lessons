@@ -12,7 +12,7 @@ class Instructor < ApplicationRecord
 
   def average_rating
       if self.reviews.size > 0
-          self.reviews.average(:rating)
+          self.reviews.average(:rating).round(1)
       else
           'No ratings'
       end

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get 'auth/provider/callback', to: 'sessions#google_auth'
+  get 'auth/failure', to: redirect('welcome#home')
+
   resources :users
   resources :sessions, only: [:create, :new]
   resources :lessons
