@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :provider, :uid, :google_token, :google_refresh_token,:admin)
+    params.permit(:email, :password, :password_confirmation, :provider, :uid, :google_token, :google_refresh_token,:admin)
   end
 end

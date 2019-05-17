@@ -18,15 +18,8 @@ class User < ApplicationRecord
      email.downcase!
   end
 
-  def self.from_omniauth(auth)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  def self.find_or_create_from_auth_hash(auth_hash)
+    where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_create
   end
 
-  def self.create_from_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      # user.name = auth["info"]["nickname"]
-    end
-  end
 end

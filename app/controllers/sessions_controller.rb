@@ -34,8 +34,11 @@ class SessionsController < ApplicationController
   # end
 
   def twitter_auth
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to lessons_path, notice: "Signed in!"
+    auth_hash = request.env['omniauth.auth']
+
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    session[:user_id] = @user.id
+    redirect_to lessons_path
   end
+
 end
