@@ -15,7 +15,6 @@
       <%= f.label :password_confirmation, "Confirmation" %><br>
       <%= f.password_field :password_confirmation, class: 'form-control' %><br>
 
-      <p>Admin? <%= f.check_box :admin, options = {:class => "user_admin"} %></p>
       <br>
       <%= f.submit "Sign up", class: "btn btn-primary" %>
     <% end %>

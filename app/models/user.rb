@@ -19,7 +19,18 @@ class User < ApplicationRecord
   end
 
   def self.find_or_create_from_auth_hash(auth_hash)
-    where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_create
+    password_str = (0...8).map{ ('a'..'z').to_a[rand(26)] }.join
+
+    user = where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first
+    unless user
+        user = User.create(
+              :provider => auth[:provider],
+              :uid => auth[:uid],
+              :email => "#{self.uid}_email@example.com",
+              :password => password_str
+        )
+    end
+    user
   end
 
 end
