@@ -38,7 +38,7 @@ DATA = {
     [9, 6]
   ],
   :instructor_keys =>
-    ["name"],
+    ["name", "bio", "class_time","picture"],
   :instructors => [
     ["Julie"],
     ["Justine Song"],
@@ -74,8 +74,8 @@ def main
   # make_lessons
   # make_bookings
   # make_instructors
-  make_skills
-  make_sections
+  # make_skills
+  # make_sections
 end
 
 def make_users

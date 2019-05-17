@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'auth/provider/callback', to: 'sessions#google_auth'
   get 'auth/failure', to: redirect('welcome#home')
 
+  get 'welcome/privacy', to: 'welcome#privacy'
+  get 'welcome/terms', to: 'welcome#terms' 
+
   resources :users
   resources :sessions, only: [:create, :new]
   resources :lessons
