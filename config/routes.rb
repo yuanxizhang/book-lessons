@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'auth/provider/callback', to: 'sessions#google_auth'
+  get 'auth/:provider/callback', to: 'sessions#twitter_auth'
   get 'auth/failure', to: redirect('welcome#home')
 
   get 'welcome/privacy', to: 'welcome#privacy'
-  get 'welcome/terms', to: 'welcome#terms' 
+  get 'welcome/terms', to: 'welcome#terms'
 
   resources :users
   resources :sessions, only: [:create, :new]

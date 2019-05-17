@@ -19,10 +19,14 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    # Creates a new user only if it doesn't exist
-    where(email: auth.info.email).first_or_initialize do |user|
-      
-      user.email = auth.info.email
+    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  end
+
+  def self.create_from_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      # user.name = auth["info"]["nickname"]
     end
   end
 end
