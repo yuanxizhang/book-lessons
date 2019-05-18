@@ -3,8 +3,8 @@ default: &default
   encoding: unicode
   host: localhost
   url: postgresql://localhost/booklessons_development?pool=5
-  user: zhang
-  password: password123
+  # user: zhang
+  # password: password123
   pool: 5
   timeout: 5000
 

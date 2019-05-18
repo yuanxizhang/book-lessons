@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'auth/:provider/callback', to: 'sessions#twitter_auth', as: 'twitter_login'
+  get 'auth/:provider/callback', to: 'sessions#google_auth', as: 'google_login'
   get 'auth/failure', to: redirect('welcome#home')
 
   get 'welcome/privacy', to: 'welcome#privacy'
