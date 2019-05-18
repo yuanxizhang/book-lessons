@@ -1,8 +1,9 @@
 <% provide(:title, 'Sign up') %>
-<%= link_to image_tag("favicon.ico", size: "60x60", alt: "logo"), root_path, class: "col-md-6 col-md-offset-3" %>
-<h2 class="col-md-6 col-md-offset-3">Sign Up</h2>
+
+<h2 class="col-md-6 col-md-offset-5">Sign Up</h2>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+
     <%= form_for(@user) do |f| %>
       <%= render 'shared/errors', object: @user %>
 
@@ -16,7 +17,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %><br>
 
       <br>
-      <%= f.submit "Sign up", class: "btn btn-primary" %>
+      <%= f.submit "Sign up", class: "btn btn-primary col-md-6 col-md-offset-3" %>
     <% end %>
   </div>
 </div>
