@@ -19,12 +19,12 @@ class SessionsController < ApplicationController
   end
 
   def google_auth
-    # Get access tokens from the google server
-    access_token = request.env["omniauth.auth"]
-    user = User.from_omniauth(access_token)
+    # Get auth_hash from the google server
+    auth_hash = request.env["omniauth.auth"]
+    user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id
-    # Access_token is used to authenticate request made from the rails application to the google server
-    user.google_token = access_token.credentials.token
+    # auth_hash is used to authenticate request made from the rails application to the google server
+    user.google_token = auth_hash.credentials.token
     # Refresh_token to request new access_token
     # Note: Refresh_token is only sent once during the first request
     refresh_token = access_token.credentials.refresh_token
@@ -33,12 +33,12 @@ class SessionsController < ApplicationController
     redirect_to user_path(user)
   end
 
-  def twitter_auth
-    auth_hash = request.env['omniauth.auth']
+  # def twitter_auth
+  #   auth_hash = request.env['omniauth.auth']
     
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    session[:user_id] = @user.id
-    redirect_to lessons_path
-  end
+  #   @user = User.find_or_create_from_auth_hash(auth_hash)
+  #   session[:user_id] = @user.id
+  #   redirect_to lessons_path
+  # end
 
 end
