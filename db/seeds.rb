@@ -38,14 +38,14 @@ DATA = {
     [9, 6]
   ],
   :instructor_keys =>
-    ["name", "bio", "class_time","picture"],
+    ["name", "bio", "class_time"],
   :instructors => [
-    ["Julie"],
-    ["Justine Song"],
-    ["Anthony Sandberg"],
-    ["Junko Hosoi"],
-    ["Katy Kuei"],
-    ["Stephen Gibbs"]
+    ["Julie", "Julie teaches students the art of breathing and asanas that help in calming and strengthening mind, body, and soul. Through her teaching, she helps students develop stamina, flexibility, and balance.", "Tuesdays, Fridays, and Saturdays"],
+    ["Justine Song", " ", " "],
+    ["Anthony Sandberg", "Anthony Sandberg teaches students how to sail on boats and yachts. He teaches safety techniques, offers advice on boat handling.", "Fridays and Saturdays"],
+    ["Junko Hosoi", " ", " "],
+    ["Katy Kuei", " ", " "],
+    ["Stephen Gibbs", "Stephen Gibbs teaches a variety of techniques in cooking to prepare healthy tasty dishes.", "Fridays and Saturdays"]
   ],
   :skill_keys =>
     ["name", "section_id"],
@@ -69,13 +69,13 @@ DATA = {
 }
 
 def main
+  # make_admin 
   # make_users
-  # make_admin
-  # make_lessons
-  # make_bookings
-  # make_instructors
-  # make_skills
   # make_sections
+  # make_skills
+  # make_instructors
+  # make_lessons  
+  # make_bookings    
 end
 
 def make_users
@@ -90,7 +90,7 @@ end
 
 def make_admin
   DATA[:admins].each do |email|
-    User.create(email: email, admin: true, password: 'password')
+    User.create(email: email, admin: true, password: 'password', password_confirmation: "password")
   end
 end
 
@@ -144,20 +144,5 @@ def make_sections
   end
 end
 
-# def make_lessons_and_bookings
-#   DATA[:lessons].each do |lesson|
-#     new_lesson = Lesson.new
-#     lesson.each_with_index do |attribute, i|
-#       new_lesson.send(DATA[:lesson_keys][i] + "=", attribute)
-#     end
-#     rand(1..8).times do
-#       customers = []
-#       User.all.each {|u| customers << u if u.admin != true}
-#       new_lesson.users << customers[rand(0...customers.length)]
-#     end
-#     new_lesson.users.each {|c| c.save}
-#     new_lesson.save
-#   end
-# end
 
 main

@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 	end
 
   def create
-    user = User.create(user_params)
-    if user.valid?
+    @user = User.create(user_params)
+    if @user.valid?
       flash[:notice] = 'Sign up was successful.'
-      session[:user_id] = user.id
-      redirect_to user_path(user)
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
       flash[:alert] = 'Sign up was not successful.'
       render :new
@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password, :password_confirmation, :provider, :uid, :google_token, :google_refresh_token,:admin)
+    params.require(:user).permit(:email, :password, :password_confirmation, :provider, :uid, :google_token, :google_refresh_token,:admin)
   end
 end

@@ -18,7 +18,7 @@ class User < ApplicationRecord
      email.downcase!
   end
 
-  def self.find_or_create_from_auth_hash(auth_hash)
+  def self.from_ominiauth(auth_hash)
     password_str = (0...8).map{ ('a'..'z').to_a[rand(26)] }.join
 
     user = where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first
@@ -30,6 +30,7 @@ class User < ApplicationRecord
               :password => password_str
         )
     end
+    user.save!
     user
   end
 

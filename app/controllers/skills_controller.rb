@@ -4,11 +4,11 @@ class SkillsController < ApplicationController
 
 	def index
 		if params[:section_id]
-        @instructor = Section.find(params[:section_id])
-        @skills = @section.skills.order('name ASC')
-    else
+        	@instructor = Section.find(params[:section_id])
+        	@skills = @section.skills.order('name ASC')
+    	else
 		    @skills = Skill.all.order('name ASC')
-    end
+    	end
 	end
 
 	def new
@@ -22,7 +22,7 @@ class SkillsController < ApplicationController
 
 	def create
 		@section = Section.find(params[:section_id])
-  	@skill = Skill.new(skill_params)
+  		@skill = Skill.new(skill_params)
 
 	  if @skill.valid?
 	  	@skill.save
@@ -49,11 +49,11 @@ class SkillsController < ApplicationController
 	private
 
 	def find_skill
-    @skill = Skill.find_by(id: params[:id])
-  end
+    	@skill = Skill.find_by(id: params[:id])
+ 	end
 
 	def skill_params
-    params.require(:skill).permit(:name, :section_id)
-  end
+    	params.require(:skill).permit(:name, :section_id)
+ 	 end
 
 end
