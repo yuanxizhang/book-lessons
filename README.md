@@ -1,8 +1,8 @@
 # Book-Lessons Rails App
 
-This Rails app was built with Ruby 2.6 and Rails 5.2. Here are steps that are necessary to get the application up and running.
+This Rails app was built with Ruby 2.4.2 and Rails 5.2. Here are the steps that are necessary to get the application up and running.
 
-Things you might need to do:
+Things you might need to do first:
 
 * Check Ruby version: the Ruby you’re using should be version 2.2.0 or above
 ```ruby
@@ -18,7 +18,7 @@ Things you might need to do:
 ```
 
 * Configuration:
-Use PostgreSQL as the default database used for development and production in config/database.yml
+Use PostgreSQL as the default database for development and production in config/database.yml
 ```ruby
   gem 'pg'
 ```
@@ -31,9 +31,9 @@ Use PostgreSQL as the default database used for development and production in co
 ```ruby
     :> heroku login
     :> heroku create
-    :> heroku apps:rename my-app-name
+    :> heroku apps:rename newappname
     :> git add .
-    :> git commit -m "Push Rails app to heroku"
+    :> git commit -m "Deploy Rails app to Heroku"
     :> git push heroku master
     :> heroku run rake db:migrate
 ```

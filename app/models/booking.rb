@@ -2,8 +2,6 @@ class Booking < ApplicationRecord
   belongs_to :lesson
   belongs_to :user
 
-  validates :lesson_id, uniqueness: { scope: :user_id }
-
   def take_lesson
     if self.lesson.seats < 1
         "Sorry. This lesson is sold out!"

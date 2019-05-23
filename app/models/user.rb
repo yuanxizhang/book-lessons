@@ -18,20 +18,15 @@ class User < ApplicationRecord
      email.downcase!
   end
 
-  def self.from_ominiauth(auth_hash)
-    password_str = (0...8).map{ ('a'..'z').to_a[rand(26)] }.join
+  def self.from_omniauth(auth_hash)
+    password_str = (0...9).map{ ('a'..'z').to_a[rand(26)] }.join
 
-    user = where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first
-    unless user
-        user = User.create(
-              :provider => auth[:provider],
-              :uid => auth[:uid],
-              :email => auth[:info][:email],
-              :password => password_str
-        )
+    # Creates a new user only if it doesn't exist
+    where(email: auth_hash.info.email).first_or_initialize do |user|
+      user.email = auth_hash.info.email
+      user.password = password_str
+      user.password_confirmation = password_str
     end
-    user.save!
-    user
   end
 
 end

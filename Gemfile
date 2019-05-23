@@ -12,11 +12,10 @@ gem 'pg'
 gem 'carrierwave'
 gem 'file_validators'
 # Use Omniauth Google plugin
-gem "omniauth-google-oauth2", '~> 0.4.1'
+gem "omniauth-google-oauth2"
 
-gem 'omniauth'
 # Use Omniauth Twitter plugin
-gem 'omniauth-twitter'
+# gem 'omniauth-twitter'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store', '~> 1.0'
 gem 'railties', '~> 5.0', '>= 5.0.0.1'
@@ -67,7 +66,7 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem "database_cleaner"
   gem "rspec-rails"
-  gem 'dotenv', '~> 2.2.1'
+  gem 'dotenv-rails'
   gem "rack_session_access"
   gem 'pry'
 end
