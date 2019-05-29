@@ -2,6 +2,15 @@ class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
   before_action :admin_only, except: [:index, :show]
 
+  def index
+    @instructors = Instructor.by_rating
+  end
+
+  def rank
+    @instructors = Instructor.top_rated.limit(3)
+    render :top3
+  end
+
   def new
     @instructor = Instructor.new
   end
@@ -18,10 +27,6 @@ class InstructorsController < ApplicationController
         format.json { render json: @instructor.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def index
-    @instructors = Instructor.all.order( 'name ASC' )
   end
 
   def show

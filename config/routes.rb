@@ -25,4 +25,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create]
   end
 
+  get '/rank' => 'instructors#rank', as: 'top3_instructors'
+  # resources :instructors do
+  #   get 'rank', :on => :collection, as: 'top3'
+  # end
 end

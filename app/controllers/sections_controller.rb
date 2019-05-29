@@ -18,8 +18,7 @@ class SectionsController < ApplicationController
 	def create
 	  @section = Section.new(section_params)
 
-	  if @section.valid?
-	  	@section.save
+	  if @section.save  	
 	  	redirect_to section_path(@section)
 	  else
 	  	render :new

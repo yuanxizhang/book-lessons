@@ -24,8 +24,7 @@ class SkillsController < ApplicationController
 		@section = Section.find(params[:section_id])
   		@skill = Skill.new(skill_params)
 
-	  if @skill.valid?
-	  	@skill.save
+	  if @skill.save
 	  	redirect_to skill_path(@skill)
 	  else
 	  	render :new

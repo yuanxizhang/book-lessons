@@ -8,6 +8,12 @@ class Instructor < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :by_rating, -> { 
+      joins(:reviews) 
+      .group("instructors.id") 
+      .order("AVG(reviews.rating) DESC, COUNT(reviews.id) DESC")
+    }
+
   accepts_nested_attributes_for :reviews
 
   def average_rating
@@ -26,5 +32,12 @@ class Instructor < ApplicationRecord
     else
       "#{self.reviews.count} reviews"
     end
+  end
+
+  def self.top_rated 
+    self.joins(:reviews)
+        .where( :reviews => { :rating => [4, 5] })
+        .group('instructors.id')
+        .order('AVG(reviews.rating) DESC, COUNT(reviews.id) DESC')
   end
 end

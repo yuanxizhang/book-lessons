@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :lessons, through: :bookings
 
+  has_many :reviews
+  has_many :instructors, through: :reviews
+
   has_secure_password
 
   validates_presence_of :email, :on => :create
