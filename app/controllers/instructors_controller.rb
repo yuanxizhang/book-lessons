@@ -3,7 +3,7 @@ class InstructorsController < ApplicationController
   before_action :admin_only, except: [:index, :show]
 
   def index
-    @instructors = Instructor.by_rating
+    @instructors = Instructor.all
   end
 
   def rank
