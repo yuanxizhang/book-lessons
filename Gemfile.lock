@@ -103,7 +103,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.0)
+    ffi (1.11.3)
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -190,7 +190,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
@@ -344,7 +344,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   pg
   pry
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack_session_access
   rails (~> 5.2.3)
   rails-erd
